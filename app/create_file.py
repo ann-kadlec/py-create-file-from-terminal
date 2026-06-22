@@ -11,7 +11,7 @@ def write_input(path: str) -> None:
         return
     else:
         with open(path, "a") as f:
-            if os.path.exists(path):
+            if os.path.getsize(path) > 0:
                 f.write("\n")
             f.write(now_str + "\n")
             while not line == "stop":
@@ -33,13 +33,16 @@ def create_file() -> None:
         os.makedirs(directory_path, exist_ok=True)
         path = os.path.join(directory_path, file_txt)
         write_input(path)
+        return
     elif "-d" in sys.argv and "-f" not in sys.argv:
         directory = sys.argv[sys.argv.index("-d") + 1:]
         directory_path = os.path.join(*directory)
         os.makedirs(directory_path, exist_ok=True)
+        return
     elif "-f" in sys.argv and "-d" not in sys.argv:
         file_txt = sys.argv[sys.argv.index("-f") + 1]
         write_input(file_txt)
+        return
 
 
 if __name__ == "__main__":

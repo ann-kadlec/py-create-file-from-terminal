@@ -38,7 +38,7 @@ def create_file() -> None:
         file_txt = args[f_position + 1]
         directory_path = os.path.join(*directory)
         os.makedirs(directory_path, exist_ok=True)
-        path = os.path.join(*directory_path, file_txt)
+        path = os.path.join(directory_path, file_txt)
         write_input(path)
         return
     elif "-d" in args and "-f" not in args:

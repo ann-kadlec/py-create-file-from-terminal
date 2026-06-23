@@ -25,6 +25,7 @@ def create_file() -> None:
         return
     directory = []
     file_txt = None
+
     if "-f" in args:
         f_position = args.index("-f")
         if f_position + 1 >= len(args):
@@ -56,5 +57,4 @@ def create_file() -> None:
         write_input(path)
 
 
-if __name__ == "__main__":
-    create_file()
+create_file()
